@@ -136,6 +136,7 @@ jobs:
           limit: ${{ env.LIMIT }}
           page_size: ${{ env.PAGE_SIZE }}
           page_limit: ${{ env.PAGE_LIMIT }}
+          excluded_authors: ${{ env.EXCLUDED_AUTHORS }}
         env:
           GITHUB_TOKEN: ${{ github.token }}
 
@@ -157,5 +158,6 @@ jobs:
           limit: ${{ env.LIMIT }}
           page_size: ${{ env.PAGE_SIZE }}
           page_limit: ${{ env.PAGE_LIMIT }}
+          excluded_authors: ${{ env.EXCLUDED_AUTHORS }}
         env:
           GITHUB_TOKEN: ${{ github.token }}
