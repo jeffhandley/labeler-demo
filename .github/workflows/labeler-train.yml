@@ -49,6 +49,7 @@ env:
   LIMIT: ${{ inputs.limit }}
   PAGE_SIZE: ${{ inputs.page_size }}
   PAGE_LIMIT: ${{ inputs.page_limit }}
+  EXCLUDED_AUTHORS: "" # Comma-separated list of authors to exclude from training data
 
 jobs:
   download-issues:
@@ -67,6 +68,7 @@ jobs:
           limit: ${{ env.LIMIT }}
           page_size: ${{ env.PAGE_SIZE }}
           page_limit: ${{ env.PAGE_LIMIT }}
+          excluded_authors: ${{ env.EXCLUDED_AUTHORS }}
         env:
           GITHUB_TOKEN: ${{ github.token }}
 
@@ -86,6 +88,7 @@ jobs:
           limit: ${{ env.LIMIT }}
           page_size: ${{ env.PAGE_SIZE }}
           page_limit: ${{ env.PAGE_LIMIT }}
+          excluded_authors: ${{ env.EXCLUDED_AUTHORS }}
         env:
           GITHUB_TOKEN: ${{ github.token }}
 

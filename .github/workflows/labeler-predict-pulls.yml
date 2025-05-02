@@ -15,6 +15,10 @@ on:
   pull_request_target:
     types: opened
 
+    # Configure the branches that need to have PRs labeled
+    branches:
+      - main
+
   # Allow dispatching the workflow via the Actions UI, specifying ranges of numbers
   workflow_dispatch:
     inputs:
@@ -33,6 +37,7 @@ env:
   LABEL_PREFIX: "area-"
   THRESHOLD: 0.40
   DEFAULT_LABEL: "needs-area-label"
+  EXCLUDED_AUTHORS: "" # Comma-separated list of authors to exclude from training data
 
 jobs:
   predict-pull-label:
@@ -59,6 +64,7 @@ jobs:
           label_prefix: ${{ env.LABEL_PREFIX }}
           threshold: ${{ env.THRESHOLD }}
           default_label: ${{ env.DEFAULT_LABEL }}
+          excluded_authors: ${{ env.EXCLUDED_AUTHORS }}
         env:
           GITHUB_TOKEN: ${{ github.token }}
         continue-on-error: ${{ !env.ALLOW_FAILURE }}
